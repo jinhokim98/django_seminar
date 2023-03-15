@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="hello">hello world</h1>
+    {% if bool %}
+        <p>My name is {{ name }}.</p>
+        <p>I am {{ age }} years old.</p>
+        <p>My major is {{ major }}.</p>
+    {% else %}
+        <p>개인정보는 공개 불가능</p>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/index.js" %}"></script>
+{% endblock %}

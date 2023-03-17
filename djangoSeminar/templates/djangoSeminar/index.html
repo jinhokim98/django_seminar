@@ -7,15 +7,25 @@
 
 {% block content %}
     <h1 class="hello">hello world</h1>
-    {% if bool %}
-        <p>My name is {{ name }}.</p>
-        <p>I am {{ age }} years old.</p>
-        <p>My major is {{ major }}.</p>
-    {% else %}
-        <p>개인정보는 공개 불가능</p>
-    {% endif %}
+    <form action="{% url 'djangoSeminar:index' %}" method="POST">
+    {% csrf_token %}
+        <h2>sign in</h2>
+        <div class="input_row">
+            <label for="id_">ID</label>
+            <input id="id_" name="id_" />
+        </div>
+        <div class="input_row">
+            <label for="pw">PW</label>
+            <input id="pw" name="pw" type="password" />
+        </div>
+        <button type="submit">확인</button>
+        <span class="result"></span>
+    </form>
 {% endblock %}
 
 {% block js %}
+    <script>
+        const is_authenticate = JSON.parse({{ login_success|lower }});
+    </script>
     <script src="{% static "js/index.js" %}"></script>
 {% endblock %}

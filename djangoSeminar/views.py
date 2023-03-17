@@ -1,17 +1,24 @@
 from django.shortcuts import render
 
+saved_id = 'hicc'
+saved_pw = 'hicc2023'
+
 
 def index(request):
-    name = "jinhokim"
-    age = "26"
-    major = "business administration"
-    show_my_personal_information = False
-    # 딕셔너리 형태로 template에 전달할 변수를 담는다.
-    # template에서 사용할 변수이름은 딕셔너리의 키이다.
-    context = {
-        "name": name,
-        "age": age,
-        "major": major,
-        "bool": show_my_personal_information,
-    }
+    context = dict()
+    if request.method == 'POST':
+        id_ = request.POST.get('id_')
+        pw = request.POST.get('pw')
+        login_success = authenticate(id_, pw)
+        context = {
+            'login_success': login_success
+        }
+
     return render(request, 'djangoSeminar/index.html', context)
+
+
+def authenticate(id_, pw):
+    if saved_id == id_ and saved_pw == pw:
+        return True
+    else:
+        return False

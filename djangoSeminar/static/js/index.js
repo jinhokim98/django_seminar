@@ -4,3 +4,11 @@ const hello = document.querySelector('.hello');
 hello.addEventListener('click', () => {
     console.log('hello');
 });
+
+const result = document.querySelector('.result');
+
+if (is_authenticate) {
+    result.textContent = "login successful";
+} else {
+    result.textContent = "login failed";
+}

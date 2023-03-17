@@ -7,8 +7,23 @@
 
 {% block content %}
     <h1>안녕하세요</h1>
+    <section>
+        <div class="partition">
+            <button class="heart_button" type="button">좋아요</button>
+            <span class="heart_count">{{ number }}</span>
+        </div>
+        <div class="partition">
+            <input class="date" type="date" name="date" />
+            <button class="date_button" type="button">선택</button>
+            <span class="date_print"></span>
+        </div>
+    </section>
 {% endblock %}
 
 {% block js %}
+    <script>
+        const heart_url = '{% url 'djangoSeminar:push_heart_button' %}';
+        const date_url = '{% url 'djangoSeminar:date_selected' %}';
+    </script>
     <script src="{% static "js/mypage.js" %}"></script>
 {% endblock %}

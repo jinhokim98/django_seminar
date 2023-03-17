@@ -22,4 +22,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('mypage/', views.mypage, name='mypage'),
     path('temp/', views.temp, name='temp'),
+    path('push_heart_button/', views.push_heart_button, name='push_heart_button'),
+    path('date_selected/', views.date_selected, name='date_selected'),
 ]

@@ -20,4 +20,6 @@ app_name = 'djangoSeminar'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('mypage/', views.mypage, name='mypage'),
+    path('temp/', views.temp, name='temp'),
 ]

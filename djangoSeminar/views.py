@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 saved_id = 'hicc'
 saved_pw = 'hicc2023'
@@ -10,9 +10,13 @@ def index(request):
         id_ = request.POST.get('id_')
         pw = request.POST.get('pw')
         login_success = authenticate(id_, pw)
-        context = {
-            'login_success': login_success
-        }
+
+        if login_success:
+            return redirect('djangoSeminar:mypage')
+        else:
+            context = {
+                'login_success': login_success
+            }
 
     return render(request, 'djangoSeminar/index.html', context)
 
@@ -22,3 +26,11 @@ def authenticate(id_, pw):
         return True
     else:
         return False
+
+
+def mypage(request):
+    return render(request, 'djangoSeminar/mypage.html')
+
+
+def temp(request):
+    return render(request, 'djangoSeminar/temp.html')

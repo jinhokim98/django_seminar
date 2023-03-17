@@ -7,6 +7,8 @@ hello.addEventListener('click', () => {
 
 const result = document.querySelector('.result');
 
+console.log(is_authenticate);
+
 if (is_authenticate) {
     result.textContent = "login successful";
 } else {
